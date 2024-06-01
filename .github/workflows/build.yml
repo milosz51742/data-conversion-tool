@@ -14,7 +14,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4  # Aktualizacja do v4
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -30,7 +35,8 @@ jobs:
       run: pyinstaller --onefile --noconsole src/project.py
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v4  # Aktualizacja do v4
+      uses: actions/upload-artifact@v4
       with:
         name: executable
         path: dist/project.exe
+
